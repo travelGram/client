@@ -1,0 +1,14 @@
+img {
+    vertical-align: middle;
+    border-style: none;
+    width: 293px;
+    height: 260px;
+}
+
+p {
+    height: 100px;
+}
+
+.row {
+    justify-content: space-evenly;
+}

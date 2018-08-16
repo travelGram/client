@@ -1,0 +1,13 @@
+
+textarea.form-control {
+    height: 30vh !important;
+}
+
+.card{
+  width: 100vh;
+  border: transparent !important;
+}
+
+.container{
+  margin-top: 30px;
+}
