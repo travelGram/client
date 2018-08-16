@@ -23,7 +23,8 @@ Vue.component('post-card', {
     data: function() {
       return {
         file: '',
-        caption: ''
+        caption: '',
+        result: ''
       }
     },
     methods: {
@@ -50,12 +51,12 @@ Vue.component('post-card', {
           axios.post('https://travelgramserver.lockonmaram.com/posts',{
             imageUrl: result.data.link,
             caption: this.caption,
-            uploader: this.userId
+            token: token
           })
           .then(done=>{
-            swal("Yeay", "New item has been submited!", "success")
+            swal("Yay!", "New photo has been posted!", "success")
             .then(ok=>{
-              window.location.assign('http://localhost:8080')
+              window.location.assign("https://travelgram.lockonmaram.com/dashboard.html")
             })
           })
           .catch(err=>{

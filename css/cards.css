@@ -8,3 +8,7 @@ img {
 p {
     height: 100px;
 }
+
+.row {
+    justify-content: space-evenly;
+}
