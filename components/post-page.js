@@ -56,7 +56,7 @@ Vue.component('post-card', {
           .then(done=>{
             swal("Yay!", "New photo has been posted!", "success")
             .then(ok=>{
-              window.location.assign("http://localhost:8080/dashboard.html")
+              window.location.assign("https://travelgram.lockonmaram.com/dashboard.html")
             })
           })
           .catch(err=>{
