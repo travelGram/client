@@ -1,0 +1,15 @@
+.d-flex{
+    width: 95%
+}
+
+.navbar-brand{
+    padding-left: 8vh
+}
+
+.form-inline{
+    padding-left: 25vh;
+}
+
+.form-control{
+    width: 100vh !important;
+}
