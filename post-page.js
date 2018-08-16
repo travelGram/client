@@ -1,3 +1,5 @@
+
+
 Vue.component('post-card', {
   template: `
     <div class="container">
@@ -6,13 +8,14 @@ Vue.component('post-card', {
             <div class="input-group mb-3">
               <div class="custom-file">
                 <input type="file" class="custom-file-input" id="inputGroupFile02" accept=".jpg, .jpeg, .png" v-on:change="uploadImage($event)">
-                <label class="custom-file-label" for="inputGroupFile02" aria-describedby="inputGroupFileAddon02">Choose file</label>
+                <label class="custom-file-label" for="inputGroupFile02" aria-describedby="inputGroupFileAddon02">{{file.name}}</label>
               </div>
             </div>
             <div class="form-group">
               <label for="exampleFormControlTextarea1">Caption:</label>
               <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" v-model="caption"></textarea>
             </div>
+            <button type="button" class="btn btn-outline-dark" @click="uploading">Submit</button>
         </div>
       </div>
     </div>
@@ -29,7 +32,39 @@ Vue.component('post-card', {
         console.log(e)
       },
       uploading(){
-        this.$emit('postImage', {img: this.file, caption: this.caption})
-      }
+        console.log("ini file", this.file)
+        console.log("ini caption", this.caption);
+        
+        let formData = new FormData()
+        formData.append('image', this.file)
+
+        let token = localStorage.getItem('token')
+
+        axios({
+          method: 'post',
+          url: 'https://travelgramserver.lockonmaram.com/upload',
+          data: formData,
+        })
+        .then(result=>{
+          console.log(result.data.link);
+          axios.post('https://travelgramserver.lockonmaram.com/posts',{
+            imageUrl: result.data.link,
+            caption: this.caption,
+            uploader: this.userId
+          })
+          .then(done=>{
+            swal("Yeay", "New item has been submited!", "success")
+            .then(ok=>{
+              window.location.assign('http://localhost:8080')
+            })
+          })
+          .catch(err=>{
+            swal("Failed!", "Item failed to input", "error");
+          })
+        })
+        .catch(function(){
+          swal("Failed!", "Your file has not been uploaded", "error");
+        });
+      }, 
     }
 })
