@@ -4,7 +4,7 @@ Vue.component('login-page', {
         <h1>Travelgram</h1>
             <img src="./img/travel.png" alt="">
         <br><br>
-        <h3>login form</h3>
+        <h3>Login form</h3>
         <div class="container-form">
         <form action="">
             <input v-model="email" type="email" placeholder="email">

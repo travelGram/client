@@ -4,7 +4,7 @@ Vue.component('register-page',{
         <h1>Travelgram</h1>
             <img src="./img/travel.png" alt="">
         <br><br>
-        <h3>Register form</h3>
+        <h3>Registration form</h3>
         <div class="container-form">
             <form action="">
                 <input v-model="email" type="email" placeholder="email">
